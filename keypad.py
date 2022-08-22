@@ -1,3 +1,7 @@
+"""This code has been adapted from a tutorial found at
+https://www.instructables.com/Raspberry-Pi-Pico-4x4-Matrix-Keypad-and-1602-LCD-I/
+"""
+
 import machine
 import utime
 
