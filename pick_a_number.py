@@ -1,14 +1,10 @@
-"""Basic program to test lcd screen and keypad working
-together."""
+"""Pick a number game, using keypad to receive
+user input and lcd screen to display outcome.
+"""
 
 import machine
 import utime
 import gpio_lcd
-
-
-# This code does not appear to currently include instructions
-# to transmit key input to lcd screen
-
 
 # two lists of gpio numbers
 def InitKeypad(rows, cols):
@@ -38,4 +34,11 @@ def PollKeypad(timer):
             if key == KEY_DOWN:
                 lcd_print(keys[row][col])
                 
+lcd = gpio_lcd.GpioLcd(rs_pin=machine.Pin(15),
+              enable_pin=machine.Pin(14),
+              d4_pin=machine.Pin(13),
+              d5_pin=machine.Pin(12),
+              d6_pin=machine.Pin(11),
+              d7_pin=machine.Pin(10),
+              num_lines=2, num_columns=16)
 
