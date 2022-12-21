@@ -9,14 +9,12 @@ class Keypad:
         """User must pass in two valid lists of row and column pin numbers
         and a matching nested list of key string values if these do not match.
         the default values for 3x3 and 4x4 keypads provided.
-        If this is not done, the keys will be set to None and the program will
-        fail when a key is pressed, since no error handling is possible for the Pico.
-        One option for the user would be to check if the keys are set to None and
-        to enable a blinking LED if this is the case.
+        If this is not done, the keys will be set to None and the program will enter an
+        error function with a flashing LED.
         NOTE: pin numbers should be given in descending order, as this is the order
         that the key matrix checks in, otherwise provide a custom key list with
         reversed key order."""
-
+        
         if keys:
             self.keys = keys
         else:
@@ -27,6 +25,7 @@ class Keypad:
                              ['7', '8', '9', 'C'], ['*', '0', '#', 'D']]
             else:
                 self.keys = None
+                self._setup_error()
 
         self.rows = [machine.Pin(pin_num, machine.Pin.OUT) for pin_num in rows]
         self.cols = [machine.Pin(pin_num, machine.Pin.IN, pull=machine.Pin.PULL_DOWN) \
@@ -44,6 +43,16 @@ class Keypad:
         for row in range(self.row_length):
             self.rows[row].low()
             
+        
+    
+    def _setup_error(self):
+        led = machine.Pin(25, machine.Pin.OUT)
+        while True:
+            led.on()
+            utime.sleep(0.5)
+            led.off()
+            utime.sleep(0.5)
+        
         
     def _poll_keypad(self):
         key = None
