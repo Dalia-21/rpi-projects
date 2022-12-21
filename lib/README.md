@@ -14,5 +14,5 @@ python
 'A'
 >>>
 ```
-By default the class supports a 3x3 matrix, with keys 1 through 9, and a 4x4 matrix with keys 1 through 9 and letters A through D. The format is determined by the number of pins provided. If a non supported matrix is provided, a custom keys list must be provided, otherwise the keys will be set to ```None```. The keys list can be provided as an optional argument to the class constructor.
+By default the class supports a 3x3 matrix, with keys 1 through 9, and a 4x4 matrix with keys 1 through 9 and letters A through D. The format is determined by the number of pins provided. If a non supported matrix is provided, a custom keys list must be provided, otherwise the keys will be set to ```None``` and the program will enter a failed state, indicated by a flashing LED. The keys list can be provided as an optional argument to the class constructor.
 The ```get_keypress()``` method can also be provided an optional argument with a timeout. After the number of seconds specified, if no key has been pressed, the method will return ```None```.
