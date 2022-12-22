@@ -1,4 +1,4 @@
-These files are used by multiple projects within this repository. The following sections provide instructions on use.
+These files are used by multiple projects within this repository. The following sections provide instructions on use. This folder also contains files describing usage of various Pico modules.
 
 ### Keypad
 The file ```keypad.py``` contains the class code for controlling a matrix keypad. The class constructor has two positional arguments and one optional one.
