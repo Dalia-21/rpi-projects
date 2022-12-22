@@ -1,0 +1,1 @@
+This folder contains testing programs for any modules which require more explanation than will fit in the README. The keypad module is very simple to test, but the LCD module is not. Explanations for tests and usage will be shown below.
