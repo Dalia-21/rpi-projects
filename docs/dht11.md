@@ -1,7 +1,7 @@
 # DHT 11
 This module for measuring temperature and humidity is simple to set up and use.
 ## Wiring
-On the module I have, the pins are clearly marked on the module. One goes to ground, one goes to power, which I have connected to the ```ADC_VREF``` pin on the Raspberry Pi Pico,and one gets connected to a GPIO pin.
+On the module I have, the pins are clearly marked on the module. One goes to ground, one goes to power, which I have connected to the ```VBUS``` pin on the Raspberry Pi Pico, which is nominally 5V,and one gets connected to a GPIO pin.
 ## Code
 The code for reading the device values is also simple. To begin with, the dht module built into the board's version of Micropython needs to be imported. The relevant imports are
 
