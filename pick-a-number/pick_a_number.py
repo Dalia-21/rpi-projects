@@ -14,21 +14,25 @@ screen = GpioLcd(rs_pin=Pin(15), enable_pin=Pin(14),
               d4_pin=Pin(13), d5_pin=Pin(12),
               d6_pin=Pin(11), d7_pin=Pin(10))
 
-        
+
+# Display introduction text
 screen.scroll_text("Welcome to the Challenge of Wits!")
 utime.sleep(1)
 screen.scroll_text("Press any key to begin")
 keypad.get_keypress()
 
+
+# Enter main game loop
 while True:
     screen.clear()
     screen.putstr("Pick a number")
     screen.move_to(0,1)
     screen.putstr("From 0-9")
     answer = random.randrange(0, 10)
-    utime.sleep(1)
+    utime.sleep(0.5) # prevent previous input from being used
     guess = keypad.get_keypress()
     screen.clear()
+    
     if guess == str(answer):
         screen.putstr("Congratulations!")
         screen.move_to(0,1)
