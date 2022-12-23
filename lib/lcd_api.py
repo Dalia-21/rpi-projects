@@ -1,14 +1,7 @@
-"""This file has been imported from a pyboard project found at
-https://github.com/dhylands/python_lcd/tree/master/lcd.
-The other files included in this project have been modified for use
-on a Raspberry Pi Pico.
-The repository from which this project has been copied uses the
-MIT License, a copy of which has been reproduced in this repository.
-"""
-
 """Provides an API for talking to HD44780 compatible character LCDs."""
 
 import time
+import utime
 
 class LcdApi:
     """Implements the API for talking with HD44780 compatible character LCDs.
@@ -177,6 +170,15 @@ class LcdApi:
             self.hal_write_data(charmap[i])
             self.hal_sleep_us(40)
         self.move_to(self.cursor_x, self.cursor_y)
+        
+    def scroll_text(self, text):
+        self.clear()
+        end_point = len(text) - self.num_columns
+        for i in range(end_point+1):
+            self.putstr(text[i:i+self.num_columns])
+            utime.sleep_ms(250)
+            if i < end_point:
+                self.clear()
 
     def hal_backlight_on(self):
         """Allows the hal layer to turn the backlight on.

@@ -14,23 +14,10 @@ screen = GpioLcd(rs_pin=Pin(15), enable_pin=Pin(14),
               d4_pin=Pin(13), d5_pin=Pin(12),
               d6_pin=Pin(11), d7_pin=Pin(10))
 
-
-screen.clear()
-screen.putstr("Welcome to a\nChallenge of wits")
-
-def scroll_text(text, line_length=16, endless=False):
-    screen.clear()
-    end_point = len(text) - line_length
-    for i in range(end_point+1):
-        screen.putstr(text[i:i+line_length])
-        utime.sleep_ms(250)
-        if i < end_point:
-            screen.clear()
         
-        
-scroll_text("Welcome to the Challenge of Wits!")
+screen.scroll_text("Welcome to the Challenge of Wits!")
 utime.sleep(1)
-scroll_text("Press any key to begin")
+screen.scroll_text("Press any key to begin")
 keypad.get_keypress()
 
 while True:
@@ -54,4 +41,6 @@ while True:
     utime.sleep(2)
     screen.clear()
     screen.putstr("Try again?")
+    screen.move_to(0,1)
+    screen.putstr("Press any key")
     keypad.get_keypress()
